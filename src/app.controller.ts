@@ -12,7 +12,17 @@ export class AppController {
   }
 
   @EventPattern('purchase-order_created')
-  async handleMessagePrinted(data: Record<string, unknown>) {
-    console.log('handleMessagePrinted', data);
+  async createProduct(payload: string) {
+    await this.appService.saveProduct(payload);
+  }
+
+  @EventPattern('purchase-order_updated')
+  async updateProduct(payload: string) {
+    await this.appService.saveProduct(payload);
+  }
+
+  @EventPattern('purchase-order_removed')
+  async removeProduct(id: string) {
+    await this.appService.removeProduct(id);
   }
 }
