@@ -6,10 +6,6 @@ import { ProductDto } from './product-dto';
 export class AppService {
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
   async saveProduct(payload: string) {
     const product: ProductDto = JSON.parse(payload);
 
